@@ -5,7 +5,7 @@ import {Button} from '@material-ui/core';
 import {DataGrid} from '@material-ui/data-grid';
 
 const API_ENDPOINT = 'https://api.airtable.com/v0/appMXRoWe5ZmkBmoD/Applications';
-const API_KEY = '?api_key=keySqgfzmn5S6fYvZ';
+const API_KEY = '?api_key=';
 
 const applicationReducer = (state, action) => {
   switch (action.type) {
@@ -52,7 +52,7 @@ function App() {
         );
   };
 
-  
+
 
   return (
     <div className="App">
