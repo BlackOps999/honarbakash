@@ -4,8 +4,12 @@ import * as REACT from 'react';
 import {Button} from '@material-ui/core';
 import {DataGrid} from '@material-ui/data-grid';
 
-const API_ENDPOINT = 'https://api.airtable.com/v0/appMXRoWe5ZmkBmoD/Applications';
-const API_KEY = '?api_key=';
+require('dotenv').config();
+
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT2;
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_TABLE = process.env.REACT_APP_API_TABLE;
+const API_BASE = process.env.REACT_APP_API_BASE;
 
 const applicationReducer = (state, action) => {
   switch (action.type) {
@@ -27,6 +31,7 @@ const applicationReducer = (state, action) => {
           ...state,
           isLoading: false,
           isError: true,
+          error: action.error,
       };
   default: throw new Error();
   }
@@ -39,7 +44,9 @@ function App() {
   const getData = () => { 
       dispatchApplications({type: 'FETCH_INIT'});
 
-      fetch(`${API_ENDPOINT}${API_KEY}`)
+      const query = `${API_ENDPOINT}${API_BASE}${API_TABLE}${API_KEY}`
+
+      fetch(query)
         .then((response) => response.json())
         .then((result) => {
           dispatchApplications({
@@ -48,8 +55,13 @@ function App() {
           });
           console.log(result)
         })
-        .catch(() => dispatchApplications({type: 'FETCH_FAILURE'})
-        );
+        .catch((error) => {
+          dispatchApplications({
+              type: 'FETCH_FAILURE',
+              error: error.message,
+          });
+          console.log(error.message)
+        });
   };
 
 
@@ -77,15 +89,14 @@ function App() {
           {applications.isLoading ? (
               <p>Loading..</p>
               ) : (
-              <p>List of Applications: <List list={applications}/></p>
+              <p>List of Navigation: <List list={applications}/></p>
           )}
         </div>
         <div className="item4-Grid">
-          {applications.isError && <>Something went wrong...</>}
-          {applications.isLoading ? (
-              <p>Loading..</p>
-              ) : (
-              <p>Table of Applications: <Table list={applications}/></p>
+          {applications.isError ? (
+              <>Something went wrong...</>
+          ) : (
+              <p>Table of Navigation: <Table list={applications}/></p>
           )}
         </div>
     </div>
@@ -101,14 +112,15 @@ const Table = ({list}) => {
   } else {
       const columns = [
         {field: 'id', headerName: 'id', width: 90},
-        {field: 'appName', headerName: 'App Name', editable: true},
-        {field: 'State', headerName: 'State', editable: false}
+        {field: 'Status', headerName: 'Status', editable: true},
+        {field: 'Sections', headerName: 'Sections', editable: false}
       ];
 
-      const rows = list.data.map((application) => ({
-        id: application.id,
-        appName: application.fields["App Name"],
-        State: application.fields.State,
+              //appName: navi.fields["App Name"],
+      const rows = list.data.map((navi) => ({
+        id: navi.id,
+        Sections: navi.fields.Sections,
+        Status: navi.fields.Status,
       }));
 
       console.log("rows - is array: " + Array.isArray(rows))
@@ -156,7 +168,7 @@ const Item = ({id, ...fields}) => {
   
   return (
     <li id={id}>
-            <span>{fields.fields["App Name"]}</span><br />          
+            <span>{fields.fields["Sections"]}</span><br />          
     </li>
   )
 };
