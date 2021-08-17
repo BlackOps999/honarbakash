@@ -70,7 +70,7 @@ function App() {
     <div className="App">
       <div className="container-Navigation">
         <ul className="navigation">
-          <li className="logo"><a className="logo" href="#"><img src={logo} className="App-logo" alt="logo" />AB OffPiste</a></li>
+          <li className="logo"><a className="logo" href="#"><img src={logo} className="App-logo" alt="logo" />ABlack Magic</a></li>
           <li className="item-Nav"><a href="">Home</a></li>
           <li className="item-Nav"><a href="">About</a></li>
           <li className="item-Nav"><a href="">Beta Zone</a></li>
