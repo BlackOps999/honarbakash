@@ -28,6 +28,7 @@ jobs:
       # install node on the runner
       - name: Setup Node.js environment
         uses: actions/setup-node@main
+      - run: Node.js -v
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
