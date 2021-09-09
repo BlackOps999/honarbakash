@@ -32,7 +32,7 @@ jobs:
       # get secret
       - name: retrieve secret
         env:
-          super_secret: ${{ secrets.username }}
+          super_secret: ${{secrets.SECRET_NAME}} | sed 's/./& /g
         run:
           echo $super_secret
                   
