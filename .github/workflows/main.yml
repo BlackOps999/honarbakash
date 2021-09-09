@@ -33,9 +33,14 @@ jobs:
           cache: 'npm'
       
       # run our node app components
-      - run: npm ci
-      - run: CI=false npm run build --if-present
-      - run: npm test      
+      - name: Install Dependencies (CI)
+        run: npm ci
+        
+      - name: Initiate Build
+        run: CI=false npm run build --if-present
+        
+      - name: Run Test Suite
+        run: npm test      
       
       # get secret
       - name: retrieve secret
