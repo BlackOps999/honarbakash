@@ -26,13 +26,21 @@ jobs:
       - uses: actions/checkout@v2
       
       # install node on the runner
-      - name: Setup Node.js environment
-        uses: actions/setup-node@main
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      # run our node app components
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test      
       
       # get secret
       - name: retrieve secret
         env:
-          super_secret: ${{secrets.SECRET_NAME}} | sed 's/./& /g
+          super_secret: ${{secrets.SECRET_NAME}}
         run:
           echo $super_secret
                   
