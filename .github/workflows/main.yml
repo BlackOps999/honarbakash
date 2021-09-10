@@ -26,16 +26,41 @@ jobs:
       - uses: actions/checkout@v2
       
       # install node on the runner
-      - uses: actions/setup-node@v2
-        with: 
-          node-version: '14'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      # run our node app components
+      - name: Install Dependencies (CI)
+        run: npm ci
+        
+      - name: Initiate Build
+        run: CI=false npm run build --if-present
+        
+      - name: Run Test Suite
+        run: npm test      
+      
+      # get secret
+      - name: retrieve secret
+        env:
+          super_secret: ${{secrets.SECRET_NAME}}
+        run:
+          echo $super_secret
+    
+  publish:
+    needs: build
+    name: push docker image to docker hub
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: check out the repo
+        uses: actions/checkout@v2
+    
+      - name: create docker image
+        run: docker build --no-cache -t ablackmagic1/node-app .
+      
+    
+    
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
