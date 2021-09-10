@@ -61,7 +61,6 @@ jobs:
       - name: get version and tag
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-        #run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     
       - name: create docker image
         run: docker build . --no-cache -t ablackmagic1/node-app:${{steps.get_version.outputs.VERSION }}
