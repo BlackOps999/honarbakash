@@ -63,7 +63,7 @@ jobs:
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
     
       - name: create docker image
-        run: docker build --no-cache -t ablackmagic1/${{STEPS.VARS.OUTPUTS.TAG}} .
+        run: docker build . --no-cache -t ablackmagic1/node-app:${{STEPS.VARS.OUTPUTS.TAG}}
       
     
     
