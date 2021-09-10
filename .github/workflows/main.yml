@@ -60,7 +60,7 @@ jobs:
       
       - name: get version and tag
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/*/}
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/heads/}
         #run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     
       - name: create docker image
