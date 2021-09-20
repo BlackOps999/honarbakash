@@ -25,15 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      # Connect to GCP
-      - name: Setup GCP Service Account
-        uses: GoogleCloudPlatform/github-actions/setup-gloud@master
-        with:
-          version: 'latest'
-          service_account_email: ${{ secrets.GCP_EMAIL }}
-          service_account_key: ${{ secrets.GCP_KEY }}
-          export_default_credentials: true
-      
       # install node on the runner
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -49,8 +40,8 @@ jobs:
         run: CI=false npm run build --if-present
         
       - name: Run Test Suite
-        run: npm test      
-      
+        run: npm test
+            
       # get secret
       - name: retrieve secret
         env:
@@ -73,6 +64,15 @@ jobs:
     
       - name: create docker image
         run: docker build . --no-cache -t ablackmagic1/node-app:${{ steps.get_version.outputs.VERSION }}
+        
+      # Connect to GCP
+      - name: Setup GCP Service Account
+        uses: GoogleCloudPlatform/github-actions/setup-gloud@master
+        with:
+          version: 'latest'
+          service_account_email: ${{ secrets.GCP_EMAIL }}
+          service_account_key: ${{ secrets.GCP_KEY }}
+          export_default_credentials: true
       
     
     
