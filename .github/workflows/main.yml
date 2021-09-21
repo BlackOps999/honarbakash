@@ -16,7 +16,7 @@ on:
 env:
   name: setup environment variables
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  SERVICE_NAME: ABlackMagic
+  SERVICE_NAME: gcloud_pipeline
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
