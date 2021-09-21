@@ -70,7 +70,15 @@ jobs:
     
       - name: create docker image
         run: docker build . --no-cache -t ablackmagic1/node-app:${{ steps.get_version.outputs.VERSION }}
-        
+  
+      - name: Create network
+        run: docker network create gcloud_pipeline
+      
+      - name: Build App Containers
+        run: docker-compose build
+      
+      - name: Run Containers
+        run: docker-compose up -d
 
         
 
