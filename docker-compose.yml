@@ -1,4 +1,4 @@
-version: "1"
+version: "1.29.0"
 
 services: 
     appAB: 
@@ -7,3 +7,8 @@ services:
         ports: 
             - '3000:3000'
         working_dir: /ABlackMagic
+
+networks:
+    default:
+        external:
+                name: gcloud_pipeline
