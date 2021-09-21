@@ -71,7 +71,7 @@ jobs:
       - name: create docker image
         run: docker build . --no-cache -t ablackmagic1/node-app:${{ steps.get_version.outputs.VERSION }}
   
-		  # Connect to GCP
+      # Connect to GCP
       - name: Setup GCP Service Account
         uses: GoogleCloudPlatform/github-actions/setup-gloud@master
         with:
