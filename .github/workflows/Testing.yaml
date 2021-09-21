@@ -27,11 +27,11 @@ env:
         uses: actions/checkout@v2
       
       # get secret
-      - name: retrieve secret
+      - name: test variables
         env:
-          super_secret: ${{secrets.SECRET_NAME}}
+          PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
         run:
-          echo $super_secret
+          echo $PROJECT_ID
           
       # Connect to GCP
       - name: Setup GCP Service Account
