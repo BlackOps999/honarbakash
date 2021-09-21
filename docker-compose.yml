@@ -1,14 +1,14 @@
-version: "1.29.0"
+version: "3.7"
 
 services: 
-    appAB: 
-        image: node:14
+    gcloud_pipeline: 
+        image: node:12-alpine
         command: sh -c "yarn install && yarn run dev"
         ports: 
             - '3000:3000'
         working_dir: /ABlackMagic
 
-networks:
-    default:
-        external:
-                name: gcloud_pipeline
+#networks:
+ #   default:
+  #      external:
+   #             name: gcloud_pipeline
