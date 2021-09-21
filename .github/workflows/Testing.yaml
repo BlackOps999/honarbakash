@@ -16,6 +16,8 @@ on:
 env:
   name: setup environment variables
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GITHUB_SHA: ${{ github.sha }}
+  GITHUB_REF: ${{ github.ref }}
   SERVICE_NAME: gcloud_pipeline
   
 jobs:
@@ -42,12 +44,18 @@ jobs:
           service_account_email: ${{ secrets.GCP_EMAIL }}
           service_account_key: ${{ secrets.GCP_KEY }}
           
-      # Build and push image to Google Container Registry
+      # Authenticate docker to work over GCLOUD CLI
+      - name: authenticate docker over GCLOUD SDK
+        run: gcloud auth configure-docker
+      
+      # Build docker image
       - name: Build
-        run: |-
-          gcloud builds submit \
-            --quiet \
-            --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+        run: |
+          export TAG='echo $GITHUB_REF | awk -F/ '{print $NF}'`
+          echo $TAG
+          docker build -t "$gcr.io/"$SERVICE_NAME":"$TAG" \
+            --build-arg GITHUB_SHA="$GITHUB_SHA" \
+            --build-arg GITHUB_REF="$GITHUB_REF" .
 
     
     
