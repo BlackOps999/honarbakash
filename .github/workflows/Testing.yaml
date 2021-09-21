@@ -56,7 +56,7 @@ jobs:
         run: |
           export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
           echo $TAG
-          docker build -t "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME":"$TAG" \
+          docker build -t "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME":"$TAG" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" .
             
@@ -65,9 +65,9 @@ jobs:
         run: |
           export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
           echo $TAG
-          docker push "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME"
-          docker tag "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME":latest
-          docker push "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME":latest
+          docker push "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME"
+          docker tag "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME":latest
+          docker push "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME":latest
 
     
     
