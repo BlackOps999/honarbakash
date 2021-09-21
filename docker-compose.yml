@@ -2,26 +2,8 @@ version: "1"
 
 services: 
     appAB: 
-        image: node:12-alpine
+        image: node:14
         command: sh -c "yarn install && yarn run dev"
         ports: 
             - 3000:3000
-        working_dir: /AIR-TABLE
-        volumes:
-            - ./:/AIR-TABLE
-        environment: 
-            MYSQL_HOST: mysql
-            MYSQL_USER: root
-            MYSQL_PASSWORD: secret  
-            MYSQL_DB: todos
-
-    mysql:
-        image: mysql:5.7
-        volumes:
-            - todo-mysql-data:/var/lib/mysql
-        environment: 
-            MYSQL_ROOT_PASSWORD: secret
-            MYSQL_DATABASE: todos
-            
-volumes:
-    todo-mysql-data:
+        working_dir: /ABlackMagic
