@@ -44,7 +44,7 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_email: ${{ secrets.GCP_EMAIL }}
           service_account_key: ${{ secrets.GCP_KEY }}
-          export_default_credentials: true
+          #export_default_credentials: true
           
       # Authenticate docker to work over GCLOUD CLI
       - name: authenticate docker over GCLOUD SDK
@@ -58,6 +58,15 @@ jobs:
           docker build -t "gcr.io/"$SERVICE_NAME":"$TAG \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" .
+            
+      # Push the image to GCP
+      - name: Publish
+        run: |
+          export TAG=`echo $GITHUB_REF | AWK -F/ '{print $NF}'
+          echo $TAG
+          docker push "gcr.io/"$SERVICE_NAME":"$TAG
+          docker tag "gcr.io/"$SERVICE_NAME":"$TAG "gcr.io/"$SERVICE_NAME":latest
+          docker push "gcr.io/"$SERVICE_NAME":latest
 
     
     
