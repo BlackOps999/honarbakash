@@ -15,9 +15,8 @@ on:
   
 env:
   name: setup environment variables
-  service_account_email: ${{ secrets.GCP_EMAIL }}
-  service_account_key: ${{ secrets.GCP_KEY }}
-  project_id: ${{ secrets.GCP_PROJECT_ID }}
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  SERVICE_NAME: ABlackMagic
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -73,15 +72,19 @@ jobs:
   
       # Connect to GCP
       - name: Setup GCP Service Account
-        uses: GoogleCloudPlatform/github-actions/setup-gloud@master
+        uses: google-github-actions/setup-gloud@master
         with:
           version: 'latest'
           service_account_email: ${{ secrets.GCP_EMAIL }}
           service_account_key: ${{ secrets.GCP_KEY }}
+          
+      # Build and push image to Google Container Registry
+      - name: Build
+        run: |-
+          gcloud builds submit \
+            --quiet \
+            --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
 
-        
-
-      
     
     
 
