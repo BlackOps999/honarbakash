@@ -63,7 +63,7 @@ jobs:
       # Push the image to GCP
       - name: Publish
         run: |
-          export TAG=`echo $GITHUB_REF | AWK -F/ '{print $NF}'
+          export TAG=`echo $GITHUB_REF | AWK -F/ '{print $NF}'`
           echo $TAG
           docker push "$REGISTERY_HOSTNAME"/"$SERVICE_NAME":"$TAG"
           docker tag "$REGISTERY_HOSTNAME"/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/"$SERVICE_NAME":latest
