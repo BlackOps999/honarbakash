@@ -18,7 +18,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
-  SERVICE_NAME: gcloud_pipeline
+  SERVICE_NAME: getting-started
   REGISTERY_HOSTNAME: gcr.io
   
 jobs:
@@ -56,7 +56,7 @@ jobs:
         run: |
           export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
           echo $TAG
-          docker build -t "$REGISTERY_HOSTNAME"/"$SERVICE_NAME":"$TAG" \
+          docker build -t "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME":"$TAG" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" .
             
@@ -65,9 +65,9 @@ jobs:
         run: |
           export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
           echo $TAG
-          docker push "$REGISTERY_HOSTNAME"/"$SERVICE_NAME":"$TAG"
-          docker tag "$REGISTERY_HOSTNAME"/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/"$SERVICE_NAME":latest
-          docker push "$REGISTERY_HOSTNAME"/"$SERVICE_NAME":latest
+          docker push "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME"
+          docker tag "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME":latest
+          docker push "$REGISTERY_HOSTNAME"/"$PROJECT_ID"/"$SERVICE_NAME":latest
 
     
     
