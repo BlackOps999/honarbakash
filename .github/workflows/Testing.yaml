@@ -16,9 +16,10 @@ on:
 env:
   name: setup environment variables
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  PROJECT_NAME: noble-nation-321921
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
-  SERVICE_NAME: getting-started
+  SERVICE_NAME: ablackmagic
   REGISTERY_HOSTNAME: gcr.io
   
 jobs:
@@ -56,7 +57,7 @@ jobs:
         run: |
           export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
           echo $TAG
-          docker build -t "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME":"$TAG" \
+          docker build -t "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" .
             
@@ -65,9 +66,9 @@ jobs:
         run: |
           export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
           echo $TAG
-          docker push "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME"
-          docker tag "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME":latest
-          docker push "$REGISTERY_HOSTNAME"/noble-nation-321921/"$SERVICE_NAME":latest
+          docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME"
+          docker tag "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
+          docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
 
     
     
