@@ -72,7 +72,7 @@ jobs:
   
       # Connect to GCP
       - name: Setup GCP Service Account
-        uses: google-github-actions/setup-gloud@master
+        uses: google-github-actions/setup-gcloud@master
         with:
           version: 'latest'
           service_account_email: ${{ secrets.GCP_EMAIL }}
