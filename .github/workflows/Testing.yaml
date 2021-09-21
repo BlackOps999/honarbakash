@@ -18,6 +18,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   SERVICE_NAME: gcloud_pipeline
   
+jobs:
   publish:
     name: push docker image to docker hub
     runs-on: ubuntu-latest
