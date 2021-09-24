@@ -98,13 +98,16 @@ jobs:
             --build-arg GITHUB_REF="$GITHUB_REF" .
 
       # Push the image to GCP
-      - name: Publish
+      - name: Publish to GCP Container Registry
         run: |
           export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
           echo $TAG
           docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG"
           docker tag "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
           docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
+          
+      - name: Deploy to GCP Cloud Run
+        run: gcloud run deploy $PROJECT_ID devablackmagic2 --image $SERVICE_NAME
 
     
     
