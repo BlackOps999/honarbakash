@@ -107,7 +107,7 @@ jobs:
           docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
           
       - name: Deploy to GCP Cloud Run
-        run: gcloud run deploy devablackmagic2 --image "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
+        run: gcloud run deploy devablackmagic2 --image "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest --region europe-west1
 
     
     
