@@ -5,10 +5,5 @@ services:
         image: node:12-alpine
         command: sh -c "yarn install && yarn run dev"
         ports: 
-            - '3000:3000'
-        working_dir: /AIR-TABLE
-
-#networks:
- #   default:
-  #      external:
-   #             name: gcloud_pipeline
+            - 8080:8080
+        working_dir: /app
