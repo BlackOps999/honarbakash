@@ -74,37 +74,37 @@ jobs:
       #- name: create docker image
       #  run: docker build . --no-cache -t ablackmagic1/node-app:${{ steps.get_version.outputs.VERSION }}
 
-        # Connect to GCP
-        - name: Setup GCP Service Account
-          uses: google-github-actions/setup-gcloud@master
-          with:
-            version: 'latest'
-            project_id: ${{ secrets.GCP_PROJECT_ID }}
-            service_account_email: ${{ secrets.GCP_EMAIL }}
-            service_account_key: ${{ secrets.GCP_KEY }}
-            #export_default_credentials: true
+      # Connect to GCP
+      - name: Setup GCP Service Account
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          version: 'latest'
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_email: ${{ secrets.GCP_EMAIL }}
+          service_account_key: ${{ secrets.GCP_KEY }}
+          #export_default_credentials: true
 
-        # Authenticate docker to work over GCLOUD CLI
-        - name: authenticate docker over GCLOUD SDK
-          run: gcloud auth configure-docker
+      # Authenticate docker to work over GCLOUD CLI
+      - name: authenticate docker over GCLOUD SDK
+        run: gcloud auth configure-docker
 
-        # Build docker image
-        - name: Build
-          run: |
-            export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
-            echo $TAG
-            docker build -t "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG" \
-              --build-arg GITHUB_SHA="$GITHUB_SHA" \
-              --build-arg GITHUB_REF="$GITHUB_REF" .
+      # Build docker image
+      - name: Build
+        run: |
+          export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
+          echo $TAG
+          docker build -t "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG" \
+            --build-arg GITHUB_SHA="$GITHUB_SHA" \
+            --build-arg GITHUB_REF="$GITHUB_REF" .
 
-        # Push the image to GCP
-        - name: Publish
-          run: |
-            export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
-            echo $TAG
-            docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG"
-            docker tag "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
-            docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
+      # Push the image to GCP
+      - name: Publish
+        run: |
+          export TAG=`echo $GITHUB_REF | awk -F/ '{print $NF}'`
+          echo $TAG
+          docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG"
+          docker tag "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":"$TAG" "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
+          docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
 
     
     
