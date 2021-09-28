@@ -7,3 +7,8 @@ RUN npm ci --only=production
 COPY . .
 EXPOSE 8080
 CMD ["node", "server.js"]
+
+FROM postgres
+ENV POSTGRES_PASSWORD docker
+ENV POSTGRESS_DB world
+COPY db-dump.sql /docker-entrypoint-initdb.d/
