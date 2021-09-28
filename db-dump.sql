@@ -1,3 +1,3 @@
 INSERT INTO "ABTest"."AB-Navigation" (id,titles) VALUES
-	 (1,'Home3'),
+	 (1,'Home4'),
 	 (2,'About');
