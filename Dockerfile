@@ -8,9 +8,9 @@ COPY . .
 EXPOSE 8080
 CMD ["node", "server.js"]
 
-FROM postgres
-WORKDIR /database
-ENV POSTGRES_PASSWORD docker
-ENV POSTGRESS_DB world
-COPY db-schema.sql /docker-entrypoint-initdb.d/
+#FROM postgres
+#WORKDIR /database
+#ENV POSTGRES_PASSWORD docker
+#ENV POSTGRESS_DB world
+#COPY db-schema.sql /docker-entrypoint-initdb.d/
 #COPY db-dump.sql /docker-entrypoint-initdb.d
