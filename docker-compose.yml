@@ -1,18 +1,44 @@
 version: "3.7"
 
+networks:
+    mynetwork:
+        driver: bridge
+
 services: 
-    gcloud_pipeline: 
-        image: node:12-alpine
-        command: sh -c "yarn install && yarn run dev"
+    ablackmagic-app: 
+        build: . #take the dockerfile image we created and build it
+        networks:
+            - mynetwork
+        links:
+            - database
+        volumes: 
+            - ./:/app
         ports: 
             - 8080:8080
         working_dir: /app
+        depends_on:
+            - database
+        environment:
+            - POSTGRES_HOST
+            - POSTGRES_USER
+            - POSTGRES_PASSWORD
+            - POSTGRES_DB
+
     database:
         image: "postgres"
-        env_file:
-            - .env
+        networks:
+            - mynetwork
+        restart: always
+        ports:
+            - 5438:5432
+        environment:
+            - POSTGRES_DB
+            - POSTGRES_USER
+            - POSTGRES_PASSWORD
         volumes:
             - database-data:/var/lib/postgresql/data/
+            - ./create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql # load the schema and then insert the data
+            - ./fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
         
 volumes:
-    database-data: 
+    database-data:
