@@ -7,3 +7,12 @@ services:
         ports: 
             - 8080:8080
         working_dir: /app
+    database:
+        image: "postgres"
+        env_file:
+            - .env
+        volumes:
+            - database-data:/var/lib/postgresql/data/
+        
+volumes:
+    database-data: 
