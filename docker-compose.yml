@@ -37,8 +37,8 @@ services:
             - POSTGRES_PASSWORD
         volumes:
             - database-data:/var/lib/postgresql/data/
-            - ./create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql # load the schema and then insert the data
-            - ./fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+            - ./src/persistence/create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql # load the schema and then insert the data
+            - .//src/persistence/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
         
 volumes:
     database-data:

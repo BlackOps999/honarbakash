@@ -8,6 +8,9 @@
 /.pnp
 .pnp.js
 
+#database
+/database-data
+
 # testing
 /coverage
 dockerignore
