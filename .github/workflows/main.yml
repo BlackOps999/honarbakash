@@ -76,7 +76,7 @@ jobs:
 
       # Connect to GCP
       - name: Setup GCP Service Account
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@main
         with:
           version: 'latest'
           project_id: ${{ secrets.GCP_PROJECT_ID }}
