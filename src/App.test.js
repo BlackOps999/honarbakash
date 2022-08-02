@@ -9,6 +9,6 @@ test('Home Navigation Bar link rendered', () => {
 
 test('Bio Navigation Bar Link rendered', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Bio/i);
+  const linkElement = screen.getByText(/Services/i);
   expect(linkElement).toBeInTheDocument();
 });
