@@ -20,7 +20,7 @@ export const Button = ({children, type, onClick, buttonStyle, buttonSize}) => {
     return (
         <Link className='btn-mobile' to='/Contact'>
             <button 
-                className={'btn ${checkButtonStyle} ${checkButtonSize}'} 
+                className={`btn ${checkButtonStyle} ${checkButtonSize}`} 
                 onClick={onClick}
                 type={type}
             >

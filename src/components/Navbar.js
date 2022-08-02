@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { Button } from './Button';
 import './Navbar.css';
@@ -17,6 +17,10 @@ function Navbar() {
             setButton(true);
         }
     }
+
+    useEffect(() => {
+        showButton();
+    }, []);
 
     //whenever screen resizes, review screen size and show or hide the button
     window.addEventListener('resize', showButton)
