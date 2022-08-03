@@ -5,11 +5,12 @@
     font-family: 'Roboto', 'PT Sans', sans-serif;
   }
   
-  .Home,
-  .Bio,
-  .Publications,
-  .Services,
-  .Contact-Me {
+  .home,
+  .bio,
+  .publications,
+  .services,
+  .rhythmai,
+  .contact-me {
     display: flex;
     height: 90vh;
     align-items: center;
@@ -17,7 +18,7 @@
     font-size: 3rem;
   }
   
-  .Home {
+  .home {
     background-image: url('./images/img-2.jpg');
     background-position: center;
     background-size: cover;
@@ -26,8 +27,17 @@
     font-size: 100px;
   }
   
-  .Bio {
-    background-image: url('./images/img-1.jpg');
+  .bio {
+    background-image: url('./images/img-5.jpg');
+    background-position: center;
+    background-size: fill;
+    background-repeat: no-repeat;
+    color: #aaaaa;
+    font-size: 100px;
+  }
+
+  .publications {
+    background-image: url('./images/img-6.jpg');
     background-position: center;
     background-size: fill;
     background-repeat: no-repeat;
@@ -35,17 +45,8 @@
     font-size: 100px;
   }
 
-  .Publications {
-    background-image: url('./images/img-8.jpg');
-    background-position: center;
-    background-size: fill;
-    background-repeat: no-repeat;
-    color: #fff;
-    font-size: 100px;
-  }
-
-  .Services {
-    background-image: url('./images/img-8.jpg');
+  .services {
+    background-image: url('./images/img-7.jpg');
     background-position: center;
     background-size: fill;
     background-repeat: no-repeat;
@@ -53,8 +54,17 @@
     font-size: 100px;
   }
   
-  .Contact-Me {
-    background-image: url('./images/img-8.jpg');
+  .contact-me {
+    background-image: url('./images/img-9.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
+  }
+
+  .rhythmai {
+    background-image: url('./images/img-9.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

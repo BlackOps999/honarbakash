@@ -4,7 +4,7 @@ video {
     height: 100%;
     position: fixed;
     z-index: -1;
-    filter: brightness(65%) contrast(120%));
+    filter: brightness(65%) contrast(130%);
 }
 
 .hero-container {

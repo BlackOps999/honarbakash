@@ -6,7 +6,7 @@ const STYLES = ['btn--primary', 'btn--outline'];
 
 const SIZES = ['btn--medium', 'btn--large'];
 
-export const Button = ({children, type, onClick, buttonStyle, buttonSize}) => {
+export const Button = ({children, type, onClick, buttonStyle, buttonSize, to}) => {
     //if buttonStyle not provided as a param, default to first STYLES array item i.e. btn-primary
     const checkButtonStyle = STYLES.includes(buttonStyle) 
     ? buttonStyle 
@@ -18,7 +18,7 @@ export const Button = ({children, type, onClick, buttonStyle, buttonSize}) => {
     : SIZES [0];
 
     return (
-        <Link className='btn-mobile' to='/Contact'>
+        <Link className='btn-mobile' to={to}>
             <button 
                 className={`btn ${checkButtonStyle} ${checkButtonSize}`} 
                 onClick={onClick}
