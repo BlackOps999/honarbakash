@@ -1,5 +1,6 @@
 import REACT from 'react';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css';
 import Home from './components/pages/Home';
@@ -22,6 +23,7 @@ function App() {
           <Route path="/RhythmAI" element={<RhythmAI/>} />
           <Route path="/Services" element={<Services/>} />
         </Routes>
+        <Footer />  
       </Router>
     </>
   )
