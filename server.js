@@ -15,8 +15,4 @@ app.get('*', (req, res) =>{
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const publicationsRouter = require(path.join(__dirname, 'src/routes/Publications.js'))
-
-
-
 app.listen(process.env.PORT || 8080);

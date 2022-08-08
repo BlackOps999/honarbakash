@@ -14,9 +14,9 @@ function Footer() {
                     Unsubscribe   
                 </p>
                 <div className="input-areas">
-                    <form>
+                    <form action="/Publications" method="POST">
                         <input type="email" name="email" placeholder="your email" className="footer-input" />
-                        <Button buttonstyle="btn--outline" to="/">Subscribe</Button>
+                        <Button buttonstyle="btn--outline" to="/Publications">Subscribe</Button>
                     </form>
                 </div> 
             </section>
