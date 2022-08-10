@@ -1,9 +1,11 @@
 --DROP SCHEMA ablackmagic;
 --DROP TABLE ablackmagic."ABM-Navigation";
 
-CREATE SCHEMA ablackmagic AUTHORIZATION root;
+create database sherry;
 
-CREATE TABLE ablackmagic."ABM-Navigation" (
-	id SERIAL primary KEY,
-	titles varchar NULL
+create table publications(
+	pub_id SERIAL primary key,
+	article varchar(255),
+	journal varchar(255),
+	authors varchar(255)
 );
