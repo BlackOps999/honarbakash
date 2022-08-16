@@ -9,7 +9,7 @@ function ListPublications() {
     //DELETE publication functions
     const deletePublication = async (id) => {
         try {
-            const deletePublication = await fetch(`http://localhost:8080/api-deletepublications/${id}`, {method: "DELETE"});
+            const deletePublication = await fetch(`/api-deletepublications/${id}`, {method: "DELETE"});
             
             console.log(deletePublication);
 
@@ -23,7 +23,7 @@ function ListPublications() {
     //get publications ALL
     const getPublications = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api-getpublications");
+            const response = await fetch("/api-getpublications");
             const jsonData = await response.json();
 
             setPublications(jsonData);

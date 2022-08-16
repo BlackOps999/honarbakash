@@ -10,7 +10,7 @@ function CreatePublications() {
         e.preventDefault();
         try {
             const body = {article};
-            const response = await fetch("http://localhost:8080/api-createpublication", {
+            const response = await fetch("/api-createpublication", {
                 method:"POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)

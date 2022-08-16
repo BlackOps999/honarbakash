@@ -28,7 +28,7 @@ const EditPublication = ({publication}) => {
     try {
         const body = {article};
         const response = await fetch(
-            `http://localhost:8080/api-updatepublication/${publication.pub_id}`,
+            `/api-updatepublication/${publication.pub_id}`,
             {
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
