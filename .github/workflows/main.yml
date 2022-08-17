@@ -20,7 +20,7 @@ env:
   GITHUB_REF: ${{ github.ref }}
   SERVICE_NAME: getting-started
   REGISTERY_HOSTNAME: gcr.io
-
+  NODE_ENV: staging
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -48,12 +48,11 @@ jobs:
       - name: Initiate Build
         run: CI=false npm run build --if-present
 
-      # Create ENV file for knowing environment: STAGING and GCP DATABASE
-      - name: create env file
-        run: |
-          touch .env
-          echo NODE_ENV=${{secrets.NODE_ENV}} >> .env
-          
+      # Check env - if staging, run E2E tests
+      - name: Check env
+        run: echo "Which env are we using (NODE_ENV)"
+        run: env
+
       - name: Run Test Suite
         run: npm test
             
