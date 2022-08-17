@@ -1,4 +1,5 @@
 const Pool = require("pg").Pool;
+//const Knex = require('knex');
 require("dotenv").config();
 
 const devConfig = {
@@ -7,24 +8,26 @@ const devConfig = {
     host: process.env.POSTGRES_HOST,
     database: process.env.POSTGRES_DB,
     port: process.env.POSTGRES_PORT
-}
+};
 
-const proConfig = {
-    connectionString: process.env.DATABASE_URL
-}
-
-const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig);
-
-console.log(process.env.NODE_ENV);
-
+const pool = new Pool(devConfig);
 /*
-//If we had a prod and dev database environment use the below code. But currently we only have prod database shared acorss all envs
-
-const proConfig = {
-    connectionString: process.env.DATABASE_URL
+const proConfig = async config => {
+    return Knex({
+        client: 'pg',
+        connection: {
+            user: process.env.POSTGRES_USER, 
+        }
+    })
+    connectionString: process.env.PROD_POSTGRES_HOST,
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB
 }
 
 const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig);
 */
+
+console.log(process.env.NODE_ENV);
 
 module.exports = pool;
