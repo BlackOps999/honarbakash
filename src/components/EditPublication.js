@@ -36,14 +36,14 @@ const EditPublication = ({publication}) => {
             }
         );
 
-        console.log(response);
+        //console.log(response);
         window.location = "/Publications";
     } catch (err) {
         console.error(err.message);
     }
   }
 
-  console.log(article);
+  // console.log(article);
 
   return (
     <div>
@@ -58,11 +58,11 @@ const EditPublication = ({publication}) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Edit Publication
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <div class="modal-body">
+          <Typography id="modal-modal-description" sx={{ mt: 2 }} component={'span'}>
+            <div className="modal-body">
                 <input type="text" className="form-control" value={article} onChange={e => setArticle(e.target.value)} />
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
                 <button type='button' onClick={e => updateArticle(e)}>Save</button>
                 <button type='button' onClick={() => {setArticle(publication.article); handleClose();}}>Close</button>
             </div>
