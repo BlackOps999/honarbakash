@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
 const cors = require("cors");
-const pool = require("./db"); //run queries on postgres
+const createUnixSocketPool = require("./db"); //run queries on postgres
 
 const PORT = process.env.PORT || 8080;
 
@@ -23,7 +23,7 @@ if(process.env.NODE_ENV === "production"){
   app.post("/api-createpublication", async(req, res) => {
     try {
       const {article} = req.body;
-      const newPublication = await pool.query("INSERT INTO publications (article) VALUES($1) RETURNING *", [article]);
+      const newPublication = await createUnixSocketPool.query("INSERT INTO publications (article) VALUES($1) RETURNING *", [article]);
       
       res.json(newPublication.rows[0]);
       console.log(req.body);
@@ -35,7 +35,7 @@ if(process.env.NODE_ENV === "production"){
   // Get all Publications
   app.get("/api-getpublications", async(req, res) => {
     try{  
-      const allPublications = await pool.query("SELECT * FROM publications");
+      const allPublications = await createUnixSocketPool.query("SELECT * FROM publications");
       res.json(allPublications.rows);
     }catch (err) {
       console.error(err.message);
@@ -46,7 +46,7 @@ if(process.env.NODE_ENV === "production"){
   app.get("/api-getpublications/:id", async(req, res) => {
     try {
       const {id} = req.params;
-      const publication = await pool.query("SELECT * FROM publications WHERE pub_id = $1", [id]);
+      const publication = await createUnixSocketPool.query("SELECT * FROM publications WHERE pub_id = $1", [id]);
       
       res.json(publication.rows[0]);
 
@@ -61,7 +61,7 @@ if(process.env.NODE_ENV === "production"){
     try {
       const {id} = req.params;
       const {article} = req.body;
-      const updatePublication = await pool.query("UPDATE publications SET article = $1 WHERE pub_id = $2", [article, id]);
+      const updatePublication = await createUnixSocketPool.query("UPDATE publications SET article = $1 WHERE pub_id = $2", [article, id]);
     
       res.json("Publication Updated");
     } catch (err) {
@@ -73,7 +73,7 @@ if(process.env.NODE_ENV === "production"){
   app.delete("/api-deletepublications/:id", async(req, res) => {
     try {
       const {id} = req.params;
-      const deletePublication = await pool.query("DELETE FROM publications WHERE pub_id = $1", [id]);
+      const deletePublication = await createUnixSocketPool.query("DELETE FROM publications WHERE pub_id = $1", [id]);
 
       res.json("Publication deleted");
     } catch (err) {
