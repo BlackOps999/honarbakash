@@ -9,7 +9,13 @@ const devConfig = {
     port: process.env.POSTGRES_PORT
 }
 
-const pool = new Pool(devConfig);
+const proConfig = {
+    connectionString: process.env.DATABASE_URL
+}
+
+const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig);
+
+console.log(process.env.NODE_ENV);
 
 /*
 //If we had a prod and dev database environment use the below code. But currently we only have prod database shared acorss all envs
