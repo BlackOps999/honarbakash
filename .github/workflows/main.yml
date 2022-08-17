@@ -26,10 +26,6 @@ env:
       touch .env
       echo NODE_ENV=${{secrets.NODE_ENV}} >> .env
 
-  - name: check .env was created2
-    uses: andstor/file-existence-action@v1
-    with:
-       files: ".env"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
