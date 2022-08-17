@@ -14,10 +14,10 @@ const proConfig = async config => {
     return Knex({
         client: 'pg',
         connection: {
-            user: process.env.POSTGRES_USER,
-            password: process.env.POSTGRES_PASSWORD,
-            database: process.env.POSTGRES_DB,
-            host: `/cloudsql/${process.env.POSTGRES_HOST}`
+            user: 'postgres',
+            password: 'Newcastle1!',
+            database: 'sherry',
+            host: `/cloudsql/noble-nation-321921:europe-west4:ablackmagic-db`
         },
         options: {}
     });
@@ -28,7 +28,7 @@ const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devCon
 console.log(process.env.POSTGRES_USER);
 console.log(process.env.POSTGRES_PASSWORD);
 console.log(process.env.POSTGRES_DB);
-console.log(`/cloudsql/${process.env.POSTGRES_HOST}/.s.PGSQL.5432`);
+console.log(`/cloudsql/${process.env.POSTGRES_HOST}`);
 
 console.log(process.env.NODE_ENV);
 
