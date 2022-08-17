@@ -52,7 +52,7 @@ jobs:
       - name: Check env
         run: env
 
-      - if: ${{env.NODE_ENV == 'staging'}}
+      - if: ${{NODE_ENV == 'staging'}}
         name: Run Test Suite if on STAGING
           run: npm test
     
