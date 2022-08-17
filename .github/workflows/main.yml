@@ -52,15 +52,10 @@ jobs:
       - name: Check env
         run: env
 
-      - name: Run Test Suite
-        run: npm test
-            
-      # get secret
-      - name: retrieve secret
-        env:
-          super_secret: ${{secrets.SECRET_NAME}}
-        run:
-          echo $super_secret
+      - name: Run Test Suite if on STAGING
+        if: NODE_ENV == 'staging'
+          run: npm test
+          echo "Test were run"
     
   publish:
     needs: build
