@@ -17,7 +17,6 @@ const proConfig = async config => {
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB,
-            //host: process.env.POSTGRES_HOST
             socketPath: `/cloudsql/${process.env.POSTGRES_HOST}`
         }
     });
@@ -25,7 +24,10 @@ const proConfig = async config => {
 
 const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig);
 
-console.log(proConfig);
+console.log(process.env.POSTGRES_USER);
+console.log(process.env.POSTGRES_PASSWORD);
+console.log(process.env.POSTGRES_DB);
+console.log(`/cloudsql/${process.env.POSTGRES_HOST}`);
 console.log(process.env.NODE_ENV);
 
 module.exports = pool;
