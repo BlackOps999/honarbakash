@@ -52,10 +52,11 @@ jobs:
       - name: Check env
         run: env
 
-      - name: Run Test Suite if on STAGING
-        if: NODE_ENV == 'staging'
-          run: npm test
-          echo "Test were run"
+      - if: ${{env.NODE_ENV}} == 'staging'
+        name: Run Test Suite if on STAGING
+          run: |
+            npm test
+            echo "Test were run"
     
   publish:
     needs: build
