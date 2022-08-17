@@ -50,7 +50,6 @@ jobs:
 
       # Check env - if staging, run E2E tests
       - name: Check env
-        run: echo "Which env are we using (NODE_ENV)"
         run: env
 
       - name: Run Test Suite
