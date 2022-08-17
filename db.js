@@ -1,14 +1,22 @@
 const Pool = require("pg").Pool;
 require("dotenv").config();
 
-const devConfig = {
+const prodConfig = {
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DB,
     host: `/cloudsql/${process.env.POSTGRES_HOST}`
 };
 
-const pool = new Pool(devConfig);
+const devConfig = {
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    host: process.env.POSTGRES_HOST,
+    database: process.env.POSTGRES_DB,
+    port: process.env.POSTGRES_PORT
+};
+
+const pool = new Pool(process.env.NODE_ENV === "production" ? prodConfig : devConfig);
 
 console.log(devConfig);
 

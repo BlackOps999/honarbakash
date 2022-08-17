@@ -16,7 +16,7 @@ function CreatePublications() {
                 body: JSON.stringify(body)
             });
 
-            window.location = "/Publications";
+            //window.location = "/Publications";
             console.log(response);
         } catch (err) {
             console.error(err.message);
