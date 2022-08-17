@@ -1,16 +1,16 @@
 const Knex = require('knex');
 
-const createUnixSocketPool = async config => {
+const pool = async config => {
     return Knex({
         client: 'pg',
         connection: {
-            user: process.env.POSTGRES_USER,
+            user: postgres,
             password: process.env.POSTGRES_PASSWORD,
-            database: process.env.POSTGRES_DB,
-            socketPath: `/cloudsql/${process.env.POSTGRES_HOST}/.s.PGSQL.5432`
+            database: sherry,
+            socketPath: `/cloudsql/noble-nation-321921:europe-west4:ablackmagic-db/.s.PGSQL.5432`
         },
         options: {}
     });
 };
 
-module.exports = createUnixSocketPool;
+module.exports = pool;
