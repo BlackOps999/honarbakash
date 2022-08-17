@@ -17,8 +17,9 @@ const proConfig = async config => {
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB,
-            socketPath: `/cloudsql/${process.env.POSTGRES_HOST}`
-        }
+            socketPath: `/cloudsql/${process.env.POSTGRES_HOST}/.s.PGSQL.5432`
+        },
+        options: {}
     });
 };
 
