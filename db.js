@@ -28,6 +28,7 @@ const proConfig = async config => {
 const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig);
 */
 
+console.log(process.env.POSTGRES_DB);
 console.log(process.env.NODE_ENV);
 
 module.exports = pool;
