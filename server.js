@@ -81,6 +81,8 @@ if(process.env.NODE_ENV === "production"){
     }
 });
 
+/*
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
@@ -89,5 +91,7 @@ app.get('/', function (req, res) {
 app.get('*', (req, res) =>{
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+*/
 
 app.listen((PORT), () => {console.log(`server has started on port ${PORT}`)});
