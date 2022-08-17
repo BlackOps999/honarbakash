@@ -29,6 +29,7 @@ console.log(process.env.POSTGRES_USER);
 console.log(process.env.POSTGRES_PASSWORD);
 console.log(process.env.POSTGRES_DB);
 console.log(`/cloudsql/${process.env.POSTGRES_HOST}`);
+
 console.log(process.env.NODE_ENV);
 
 module.exports = pool;
