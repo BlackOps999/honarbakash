@@ -8,6 +8,13 @@ const prodConfig = {
     host: `/cloudsql/${process.env.POSTGRES_HOST}`
 };
 
+const stagConfig = {
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB,
+    host: `/cloudsql/${process.env.POSTGRES_HOST}`
+};
+
 const devConfig = {
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
@@ -16,10 +23,10 @@ const devConfig = {
     port: process.env.POSTGRES_PORT
 };
 
-const pool = new Pool(process.env.NODE_ENV === "production" ? prodConfig : devConfig);
+const pool = new Pool(process.env.NODE_ENV === "production" ? prodConfig : process.env.NODE_ENV === "staging" ? stagConfig : devConfig);
 
-console.log(devConfig);
+//console.log(devConfig);
 
-console.log(process.env.NODE_ENV);
+//console.log(process.env.NODE_ENV);
 
 module.exports = pool;

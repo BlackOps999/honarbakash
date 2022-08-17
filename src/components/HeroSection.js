@@ -8,8 +8,10 @@ function HeroSection() {
     return (
         <div className="hero-container">
             <video src="../videos/AdobeStock_471926688_Video_HD_Preview.mov" autoPlay loop muted />  
-            <h1>Doctor Sherry Awaits</h1>
-            <p>Get intouch</p>
+            <h1>DR. Shohreh Honarbakash</h1>
+            <p> MBBS BSc MRCP PhD</p>
+            <p></p>
+            <p>Barts Health NHS Trust - Cardiology</p>
             <div className="hero-btns">
                 <Link to="/Bio">
                     <Button className="btns" buttonStyle="btn--outline" buttonSize="btn--large" to="/Bio"><i className="fa-solid fa-circle-info" /> Bio </Button>
