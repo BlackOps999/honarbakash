@@ -56,6 +56,7 @@ function Navbar() {
                 <Link to="/ContactMe">
                     {button && <Button buttonStyle='btn--outline' to="/ContactMe">Contact Me</Button>}
                 </Link>
+                <div className="nav-signIn" id="signInDiv"></div>
             </nav>
         </>
     );
