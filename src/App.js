@@ -18,7 +18,7 @@ function App() {
   function handleCallbackResponse(response){
       //console.log("Encoded JWT token ID: " + response.credential);
       const userObject = jwt_decode(response.credential);
-      console.log(userObject);
+      //console.log(userObject);
       setUser(userObject);
       // user logged in, hide the login button ***WILL WORK WHEN MOVE setUser to global variable
       //document.getElementById("signInDiv").hidden = true;
@@ -28,7 +28,7 @@ function App() {
     setUser({});
     // user logged out, hide the logout button and show login ***WILL WORK WHEN MOVE setUser to global variable
     document.getElementById("btn-signOut").hidden = true;
-    console.log("User: " && user);
+    //console.log("User: " && user);
   };
 
   useEffect(() => {
