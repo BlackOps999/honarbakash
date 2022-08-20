@@ -147,7 +147,8 @@
   
     .fa-times {	
       color: #fff;	
-      font-size: 2rem;	
+      font-size: 2rem;
+      transform: translate(-100%, 0%);		
     }	
   
     .nav-links-mobile {	
