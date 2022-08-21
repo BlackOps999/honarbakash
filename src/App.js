@@ -38,7 +38,9 @@ function App() {
 
   return (
     <> 
-      <GoogleLogin data-shape="circular" data-size="large" data-type="icon" data-theme="filled_white" clientId={clientId} onSuccess={onSuccess} onFailure={onFailure} cookiePolicy={'single_host_origin'} isSignedIn={true} />
+      <div className='GoogleLoginBtn'>
+        Google Button: <GoogleLogin data-shape="circular" data-size="large" data-type="icon" data-theme="filled_white" clientId={clientId} onSuccess={onSuccess} onFailure={onFailure} cookiePolicy={'single_host_origin'} isSignedIn={true} />
+      </div>
       <Router>
         <Navbar />
         <Routes>

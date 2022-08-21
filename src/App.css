@@ -4,6 +4,10 @@
     padding: 0;
     font-family: 'Roboto', 'PT Sans', sans-serif;
   }
+
+  .GoogleLoginBtn {
+    height: 80px;	
+  }
   
   .home,
   .bio,
@@ -32,7 +36,7 @@
     background-position: center;
     background-size: fill;
     background-repeat: no-repeat;
-    color: #aaaaa;
+    color: #fff;
     font-size: 100px;
   }
 
