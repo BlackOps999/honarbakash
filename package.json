@@ -21,10 +21,12 @@
     "curl": "^0.1.4",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "gapi-script": "^1.2.0",
     "jwt-decode": "^3.1.2",
     "pg": "^8.7.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-google-login": "^5.2.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^4.0.3",
     "wait-port": "^0.2.9",
@@ -34,7 +36,7 @@
     "devStart": "nodemon server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(gapi-script)/)'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
