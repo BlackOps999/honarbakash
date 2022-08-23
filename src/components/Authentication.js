@@ -24,6 +24,10 @@ function Authentication () {
 
   useEffect(() => {
     //let window = [];
+
+    window.google = {
+        id: []
+    };
     /*global google*/
     window.google.accounts.id.initialize({
       client_id: "541789097928-fhs8jv38r9jaqjfe4527ofp4tg8vqjpq.apps.googleusercontent.com",

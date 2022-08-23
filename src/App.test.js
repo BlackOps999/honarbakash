@@ -7,9 +7,10 @@ test('Home Navigation Bar link rendered', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
+/*
 test('Bio Navigation Bar Link rendered', () => {
   render(<App />);
   const linkElement = screen.getByText(/Sherry Honar/i);
   expect(linkElement).toBeInTheDocument();
 });
-
+*/
