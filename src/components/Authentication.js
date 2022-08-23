@@ -32,8 +32,8 @@ function Authentication () {
       callback: handleCallbackResponse
     });
 
-    console.log(process.env.REACT_APP_OAUTH2CLIENTID)
-    console.log(process.env.REACT_APP_OAUTH2SECRET)
+    console.log(`clientID: ` + process.env.REACT_APP_OAUTH2CLIENTID)
+    console.log(`Sec: ` + process.env.REACT_APP_OAUTH2SECRET)
 
     window.google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
