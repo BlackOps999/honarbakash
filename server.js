@@ -8,6 +8,10 @@ const pool = require("./db"); //run queries on postgres
 
 const PORT = process.env.PORT || 8080;
 
+console.log(`clientID: ${process.env.REACT_APP_OAUTH2CLIENTID}`)
+console.log(`Sec: ${process.env.REACT_APP_OAUTH2SECRET}`)
+
+
 //middleware
 app.use(express.json());
 app.use(cors());
