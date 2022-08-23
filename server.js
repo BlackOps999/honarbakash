@@ -79,7 +79,7 @@ if(process.env.NODE_ENV === "production"){
     } catch (err) {
       console.error(err.message);
     }
-});
+  });
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

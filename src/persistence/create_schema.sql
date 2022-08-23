@@ -9,3 +9,10 @@ create table publications(
 	journal varchar(255),
 	authors varchar(255)
 );
+
+create table users(
+	user_id SERIAL primary key,
+	name varchar(255),
+	email varchar(255),
+	picture varchar(255)
+);

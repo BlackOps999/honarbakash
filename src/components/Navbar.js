@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { Button } from './Button';
 import './Navbar.css';
+import Authentication from './Authentication';
 
 function Navbar() {
     const [click, setClick] = useState(false);
@@ -56,7 +57,7 @@ function Navbar() {
                 <Link to="/ContactMe">
                     {button && <Button buttonStyle='btn--outline' to="/ContactMe">Contact Me</Button>}
                 </Link>
-                <div className="nav-signIn" id="signInDiv"></div>
+                <Authentication />
             </nav>
         </>
     );
