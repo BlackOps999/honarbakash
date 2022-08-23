@@ -27,10 +27,12 @@ function Authentication () {
 
     /*global google*/
     window.google.accounts.id.initialize({
-      client_id: "541789097928-fhs8jv38r9jaqjfe4527ofp4tg8vqjpq.apps.googleusercontent.com",
-      clientSecret: process.env.OAUTH2SECRET,
+      client_id: process.env.REACT_APP_OAUTH2CLIENTID,
+      clientSecret: process.env.REACT_APP_OAUTH2SECRET,
       callback: handleCallbackResponse
     });
+
+    console.log(process.env.REACT_APP_OAUTH2CLIENTID);
 
     window.google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
