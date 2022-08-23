@@ -3,10 +3,10 @@ require("dotenv").config();
 
 
 const prodConfig = {
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DB,
-    host: `/cloudsql/${process.env.POSTGRES_HOST}`
+    user: process.env.REACT_APP_POSTGRES_USER,
+    password: process.env.REACT_APP_POSTGRES_PASSWORD,
+    database: process.env.REACT_APP_POSTGRES_DB,
+    host: `/cloudsql/${process.env.REACT_APP_POSTGRES_HOST}`
 };
 
 const stagConfig = {
