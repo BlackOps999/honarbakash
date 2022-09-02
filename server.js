@@ -5,6 +5,8 @@ const path = require('path');
 const app = express();
 const cors = require("cors");
 const pool = require("./db"); //run queries on postgres
+const { OAuth2Client } = require('google-auth-library')
+const client = new OAuth2Client(process.env.REACT_APP_OAUTH2CLIENTID)
 
 const PORT = process.env.PORT || 8080;
 
@@ -81,6 +83,25 @@ if(process.env.NODE_ENV === "production"){
       console.error(err.message);
     }
   });
+
+  //authenticate user
+  app.post("/api/v1/auth/google", async (req, res) => {
+    try {
+      const { name, email, picture } = req.body;
+      console.log(req.body);
+      const user = await pool.query("INSERT INTO users(email, name, picture) VALUES ($1, $2, $3) ON CONFLICT (email) DO UPDATE SET name=$2, picture=$3", [email, name, picture])
+      console.log("Login Success" + name);    
+      res.status(201)
+      res.json(user)
+
+      //add logic: create a session
+      //if the user has admin rights then enable edit mode.
+
+    } catch (err) {
+      console.error(err.message);
+    }
+    
+})
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
