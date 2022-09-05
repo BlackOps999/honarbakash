@@ -16,12 +16,13 @@ const style = {
   p: 4,
 };
 
-const EditPublication = ({publication}) => {
+const EditPublication = ({publication, publicationState, setPublicationsState}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [article, setArticle] = React.useState(publication.article);
+  const [publications, setPublications] = React.useState(publicationState);
 
   const updateArticle = async e => {
     e.preventDefault();
@@ -36,12 +37,30 @@ const EditPublication = ({publication}) => {
             }
         );
 
+        updateState();
+ 
         //console.log(response);
-        window.location = "/Publications";
+        //window.location = "/Publications";
     } catch (err) {
         console.error(err.message);
     }
+
   }
+
+  const updateState = () => {
+    const newState = publications.map(obj => {
+      if (obj.pub_id === publication.pub_id)
+      {
+          //console.log(publication.pub_id)
+          return {...obj, article: article}
+      }
+      return obj;
+    });
+    //console.log(newState);
+    setArticle(article);
+    setPublicationsState(newState);
+    handleClose();
+  };
 
   // console.log(article);
 

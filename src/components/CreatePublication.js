@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './CreatePublication.css';
 import { Button } from './Button';
+import {Link} from 'react-router-dom';
 
 function CreatePublications() {
 
@@ -16,7 +17,7 @@ function CreatePublications() {
                 body: JSON.stringify(body)
             });
 
-            window.location = "/Publications";
+            //window.location.href = "/Publications";
             //console.log(response);
         } catch (err) {
             console.error(err.message);

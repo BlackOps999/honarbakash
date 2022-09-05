@@ -1,6 +1,6 @@
 import {createContext, useContext} from 'react';
 
-const userContext = createContext(null);
+const userContext = createContext({});
 
 const useUser = () => useContext(userContext);
 

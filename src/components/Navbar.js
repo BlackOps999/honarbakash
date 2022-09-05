@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import { Button } from './Button';
 import './Navbar.css';
 import Authentication from './Authentication';
-import {userContext, useUser} from '../store/userContext';
 
 function Navbar() {
     const [click, setClick] = useState(false);
@@ -23,8 +22,6 @@ function Navbar() {
     useEffect(() => {
         showButton();
     }, []);
-
-    const user5 = useUser();
 
     //whenever screen resizes, review screen size and show or hide the button
     window.addEventListener('resize', showButton)
@@ -61,8 +58,6 @@ function Navbar() {
                     {button && <Button buttonStyle='btn--outline' to="/ContactMe">Contact Me</Button>}
                 </Link>
                 <Authentication />
-                NAVBARUser Name: {user5.user.name}
-
             </nav>
         </>
     );
