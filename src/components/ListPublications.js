@@ -83,7 +83,7 @@ function ListPublications() {
             <table className='table mt-5 text-center'>
                 <thead>
                     <tr>
-                        <th>Article</th>
+                        <th>Article12345</th>
                         {user.user.name &&
                             <th>Edit</th>
                         }
