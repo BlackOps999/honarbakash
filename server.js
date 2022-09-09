@@ -22,6 +22,7 @@ if(process.env.NODE_ENV === "production"){
 // BACKEND ROUTES //
  // Create Publication
   app.post("/api-createpublication", async(req, res) => {
+    
     try {
       const {article} = req.body;
       const newPublication = await pool.query("INSERT INTO publications (article) VALUES($1) RETURNING *", [article]);
