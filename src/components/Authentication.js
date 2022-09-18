@@ -17,6 +17,7 @@ function Authentication () {
       updateUser(googleUser);
       //Update database with user login details      
       authBackEnd(googleUser);
+      checkAdmin(googleUser);
       //hide login button
       document.getElementById("signInDiv").hidden = true;
   };
@@ -38,7 +39,35 @@ function Authentication () {
     } catch (err) {
         console.error(err.message);
     }
+    };
+
+const checkAdmin = async (googleUser) => {
+    //Check if Admin
+    try {
+        const response = await fetch(`/api/v1/auth/google/${googleUser.googleID}`, {
+            method: "GET",
+            headers: {"Content-Type": "application/json"}
+        })
+        const data = await response.json();
+        //console.log(data.admin);
+
+        if (data.admin === 'y'){
+            //console.log('admin')
+            setUser(user => ({...user, admin: 'Admin'}))    
+        } else {
+            console.log('Not an Admin User')
+        };     
+
+
+    } catch (err) {
+        console.error(err.message);
+    }
+    
 }
+
+useEffect(() => {
+    console.log(user);
+}, [user]);
 
   function handleSignOut(event) {
     setUser([]);

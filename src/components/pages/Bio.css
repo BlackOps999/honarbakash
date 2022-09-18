@@ -1,0 +1,21 @@
+
+
+.bio-main-pic{
+    width: 30%;
+    background-image: url('../../images/bio/heart.png');
+    background-position: right;
+    background-size:contain;
+    background-repeat: no-repeat;
+    margin-left: 2em;
+}
+
+
+.h1-bio-intro {
+    text-align: left !important;
+    margin-bottom: 1em !important;
+  }
+
+h3 {
+    margin-top: 0.8em;
+    color: #328CC1;
+}

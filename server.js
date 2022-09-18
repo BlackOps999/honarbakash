@@ -22,7 +22,7 @@ if(process.env.NODE_ENV === "production"){
 // BACKEND ROUTES //
  // Create Publication
   app.post("/api-createpublication", async(req, res) => {
-    
+
     try {
       const {article} = req.body;
       const newPublication = await pool.query("INSERT INTO publications (article) VALUES($1) RETURNING *", [article]);
@@ -89,20 +89,36 @@ if(process.env.NODE_ENV === "production"){
   app.post("/api/v1/auth/google", async (req, res) => {
     try {
       const { name, email, picture, expiry, googleID } = req.body;
-      console.log(req.body);
+      //console.log(req.body);
       const user = await pool.query("INSERT INTO users(email, name, picture, expiry, googleID) VALUES ($1, $2, $3, $4, $5) ON CONFLICT (email) DO UPDATE SET name=$2, picture=$3, expiry=$4, googleID=$5", [email, name, picture, expiry, googleID])
       console.log("Login Success" + name);    
       res.status(201)
       res.json(user)
 
-      //add logic: create a session
       //if the user has admin rights then enable edit mode.
 
     } catch (err) {
       console.error(err.message);
-    }
-    
-})
+    }    
+  })
+
+  // Get User Admin or Not
+  app.get("/api/v1/auth/google/:id", async(req, res) => {
+      try {
+        const {id} = req.params;
+        const adminCheck = await pool.query("SELECT * FROM users WHERE googleid = $1 and admin = 'y'", [id]);
+        
+        if (adminCheck.rowCount === 0) {
+          console.log('Not an admin user');
+          res.status(201)
+        } else{
+          res.status(201)
+          res.json(adminCheck.rows[0]); 
+        }
+      } catch (err) {
+        console.error(err.message);
+      };
+  });
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
