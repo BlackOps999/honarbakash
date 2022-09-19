@@ -16,6 +16,7 @@ env:
   name: setup environment variables
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   PROJECT_NAME: noble-nation-321921
+  CLOUDRUN_INSTANCE: honarbakhsh
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
   SERVICE_NAME: getting-started
@@ -105,7 +106,7 @@ jobs:
           docker push "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest
           
       - name: Deploy to GCP Cloud Run
-        run: gcloud run deploy honarbakhsh --image "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest --region europe-west1 --add-cloudsql-instances $SQL_Instance
+        run: gcloud run deploy $CLOUDRUN_INSTANCE --image "$REGISTERY_HOSTNAME"/"$PROJECT_NAME"/"$SERVICE_NAME":latest --region europe-west1 --add-cloudsql-instances $SQL_Instance
 
     
     
