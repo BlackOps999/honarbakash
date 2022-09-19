@@ -11,7 +11,7 @@ function Bio() {
                     </h1>
                     <h2>Feel free to read through my experience below, or reachout to discuss. From day1, all my patients are managed with the upmost privacy, focus and dedication.”
                     </h2>
-                    <h3>Leader and innovator within UK Cardiology - DR Shohreh Honarbakhsh.
+                    <h3>Leader and innovator within UK Cardiology - DR Shohreh Honarbakhsh
                     </h3>
                 </div>
                 <div className='bio-main-pic'>
