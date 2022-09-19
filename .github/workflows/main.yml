@@ -24,7 +24,7 @@ env:
   NODE_ENV: ${{ secrets.NODE_ENV }}
   SQL_Instance: noble-nation-321921:europe-west4:ablackmagic-db
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel...
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
