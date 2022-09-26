@@ -1,21 +1,58 @@
 
+.bio-container {
+    background-color: #1D2731;
+    padding: 1.5rem 3rem 1rem 3rem;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    
+}
 
-.bio-main-pic{
-    width: 30%;
+.bio-intro-items:nth-child(1) {
+    display: block;
+
+    flex-grow: 1;
+    
+}
+
+.bio-intro-items:nth-child(2) {
+    display: block;
+    min-width: 200px;
+    flex-grow: 5;
+    flex-shrink: 0;
     background-image: url('../../images/bio/heart.png');
     background-position: right;
     background-size:contain;
     background-repeat: no-repeat;
     margin-left: 2em;
+    
 }
 
 
 .h1-bio-intro {
     text-align: left !important;
     margin-bottom: 1em !important;
+    
   }
 
 h3 {
     margin-top: 0.8em;
     color: #328CC1;
+}
+
+@media screen and (max-width: 820px) {
+    .bio-container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .bio-intro-items:nth-child(2) {
+        display: block;
+        min-height: 250px;
+        margin-left: 0em;
+        margin-bottom: 1.5em;
+    }
 }

@@ -6,7 +6,6 @@
   }
  
   .home,
-  .bio,
   .publications,
   .services,
   .rhythmai,
@@ -25,13 +24,6 @@
     background-repeat: no-repeat;
     color: #fff;
     font-size: 100px;
-  }
-  
-  .bio-container {
-    background-color: #1D2731;
-    color: #fff;
-    display: flex;
-    padding: 3em;
   }
 
   .publications {

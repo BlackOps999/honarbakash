@@ -85,9 +85,11 @@ function ListPublications() {
                     <tr>
                         <th>Article12345</th>
                         {user.user.name &&
+                            <>
                             <th>Edit</th>
+                            <th>Delete</th>
+                            </>
                         }
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,10 +97,11 @@ function ListPublications() {
                         <tr key={publication.pub_id}>
                             <td>{publication.article}</td>
                             {user.user.name && 
+                                <>
                                 <td><EditPublication publication={publication} publicationState={publications} setPublicationsState={setPublications} /></td>
-                            }
                                 <td><Button buttonstyle="btn--primary" onClick={() => deletePublication(publication.pub_id)}>Delete</Button></td>
-                            
+                                </>
+                            }
                         </tr>
                     ))}
                 </tbody>
