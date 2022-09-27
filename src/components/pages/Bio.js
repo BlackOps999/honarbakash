@@ -17,6 +17,18 @@ function Bio() {
                 </div>
                 <div className='bio-intro-items'></div>
             </div>
+            <div className='bio-success-bar'>
+                <div className='bio-success-image'><i class="fa-solid fa-user-doctor fa-2xl"></i></div>
+                <div className='bio-success-image'><i class="fa-solid fa-book-medical fa-2xl"></i></div>
+                <div className='bio-success-image'><i class="fa-solid fa-award fa-2xl"></i></div>
+                <div className='bio-success-image'><i class="fa-solid fa-graduation-cap fa-2xl"></i></div>
+                <div className='bio-success-image'><i class="fa-solid fa-heart-pulse fa-2xl"></i></div>
+                <div className='bio-success-section'>Experience (yrs): <br /> 13</div>
+                <div className='bio-success-section'>Publications: <br /> 241</div>
+                <div className='bio-success-section'>Prizes: <br /> 5</div>
+                <div className='bio-success-section'>Degrees: <br /> 7</div>
+                <div className='bio-success-section'>Successful Ops: <br /> 2.5k</div>
+            </div>
         </>
     )
 }

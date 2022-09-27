@@ -8,12 +8,12 @@
     justify-content: center;
     align-items: stretch;
     align-content: flex-start;
+    gap: 2rem;
     
 }
 
 .bio-intro-items:nth-child(1) {
     display: block;
-
     flex-grow: 1;
     
 }
@@ -27,7 +27,6 @@
     background-position: right;
     background-size:contain;
     background-repeat: no-repeat;
-    margin-left: 2em;
     
 }
 
@@ -43,16 +42,80 @@ h3 {
     color: #328CC1;
 }
 
-@media screen and (max-width: 820px) {
+.bio-success-bar {
+    background-color: #1D2731;
+    padding: 2rem 3rem 1rem 3rem;
+    color: #fff;
+    list-style: none;
+    display: grid;
+    grid-auto-flow: row; 
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 1rem;	
+    grid-row-gap: 0rem;
+}
+
+.bio-success-section {
+    text-align: center;
+    border-right: 1px solid black;	
+}
+
+/* Remove border right from last item */
+.bio-success-section:last-child {
+    border-right: none;
+}
+
+.bio-success-image {
+    text-align: center;
+    color: #d9b310;
+    border-right: 1px solid black;		
+}
+
+/* Remove border right from last item */
+.bio-success-image:nth-child(5){
+    border-right: none;
+}
+
+
+
+/* ABOVE: PC/Desktop greater than 1024px */
+
+/* Tablet */
+@media screen and (min-width: 700px) and (max-width: 1023px) {
+
+}
+
+/* Mobile */
+@media screen and (max-width: 699px) {
     .bio-container {
+        padding: 1rem 3rem 1rem 3rem;
         flex-direction: column-reverse;
-        align-items: center;
+        align-items:flex-start;
     }
 
     .bio-intro-items:nth-child(2) {
         display: block;
-        min-height: 250px;
-        margin-left: 0em;
-        margin-bottom: 1.5em;
+        min-height: 200px;
+    }
+
+    .h1-bio-intro {
+        font-size: 2rem ;        
+      }
+
+    .bio-success-bar {
+        grid-auto-flow: column;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(5, 1fr);
+        grid-row-gap: 2rem; 
+        align-items: center;
+        border: none;
+    }
+
+    .bio-success-section {
+        border: none;	
+    }
+
+    .bio-success-image{
+        border: none;
     }
 }
