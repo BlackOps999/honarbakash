@@ -9,7 +9,7 @@
     align-items: stretch;
     align-content: flex-start;
     gap: 2rem;
-    
+    max-width: 1500px;	    
 }
 
 .bio-intro-items:nth-child(1) {
@@ -53,6 +53,8 @@ h3 {
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 1rem;	
     grid-row-gap: 0rem;
+    max-width: 1500px;
+    width: 100%;
 }
 
 .bio-success-section {
@@ -88,13 +90,14 @@ h3 {
     grid-column-gap: 2rem;	
     grid-row-gap: 1rem;
     justify-items: center;
+    max-width: 1500px;
 }
 
 .bio-content-cell1 {
     position: relative;
-    top: 0;
+    top: 10px;
     left: 0;
-    max-width: 65%;
+    max-width: 95%;
 }
 
 .prizes {
@@ -123,9 +126,9 @@ h3 {
 
 .bio-content-cell4 {
     position: relative;
-    top: 0;
+    top: 30px;
     left: 0;
-    max-width: 65%;
+    max-width: 100%;
 }
 
 .education {
@@ -144,9 +147,9 @@ h3 {
 
 .bio-content-cell5 {
     position: relative;
-    top: 0;
+    top: 30px;
     left: 0;
-    max-width: 65%;
+    max-width: 95%;
 }
 
 .employment {
