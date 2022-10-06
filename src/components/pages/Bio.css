@@ -9,7 +9,7 @@
     align-items: stretch;
     align-content: flex-start;
     gap: 2rem;
-    max-width: 1500px;	    
+    max-width: 1400px;	    
 }
 
 .bio-intro-items:nth-child(1) {
@@ -20,14 +20,15 @@
 
 .bio-intro-items:nth-child(2) {
     display: block;
-    min-width: 200px;
-    flex-grow: 5;
+    min-width: 30%;
+    min-height: 350px;
+    flex-grow: 0;
     flex-shrink: 0;
     background-image: url('../../images/bio/heart.png');
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
-    
+    max-width: 75%; 
 }
 
 
@@ -55,6 +56,7 @@ h3 {
     grid-row-gap: 0rem;
     max-width: 1500px;
     width: 100%;
+    max-width: 1500px;
 }
 
 .bio-success-section {
@@ -79,17 +81,48 @@ h3 {
 }
 
 .bio-content {
+    max-width: 1300px;
+}
+
+.bio-content-1 {
+    background-color: #1D2731;
+    padding: 5rem 3rem 1rem 3rem;
+    color: #fff;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: stretch;
+    max-width: 1500px;
+}
+
+.bio-content-2 {
     background-color: #1D2731;
     padding: 2rem 3rem 1rem 3rem;
     color: #fff;
     list-style: none;
-    display: grid;
-    grid-auto-flow: row; 
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 2rem;	
-    grid-row-gap: 1rem;
-    justify-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: stretch;
+    max-width: 1500px;
+}
+
+.bio-content-3 {
+    background-color: #1D2731;
+    padding: 5rem 3rem 5rem 3rem;
+    color: #fff;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: stretch;
     max-width: 1500px;
 }
 
@@ -97,85 +130,112 @@ h3 {
     position: relative;
     top: 10px;
     left: 0;
-    max-width: 95%;
+    flex: 0 1 auto;
+    min-width: 30%;
 }
 
 .prizes {
     position: relative;
     top: 25px;
     left: 0;
-    max-width: 100%;
+    max-height: 85%;
+    max-width: 85%;
 }
 
 .prizesBg {
     position: absolute;
     top:0px;
     left:0px;
-    max-width: 100%;
+    max-height: 85%;
+    max-width: 85%;
 }
 
 .bio-content-cell2 {
-    max-width: 90%;
-    grid-column: span 3;
+    flex: 1 1 auto;
+    align-self: flex-start;
+    
 }
 
 .bio-content-cell3 {
-    max-width: 90%;
-    grid-column: span 3;
+    flex: 1 1 auto;
+    align-self: flex-end;
+    text-align: end;
+    margin-right: 2em;
+
 }
 
 .bio-content-cell4 {
     position: relative;
     top: 30px;
     left: 0;
-    max-width: 100%;
+    flex: 0 1 auto;
+    min-width: 30%;
 }
 
 .education {
     position: relative;
     top: 25px;
     left: 0;
-    max-width: 100%;
+    max-height: 85%;
+    max-width: 85%;
 }
 
 .educationBg {
     position: absolute;
     top:0px;
     left:0px;
-    max-width: 100%;
+    max-height: 85%;
+    max-width: 85%;
 }
 
 .bio-content-cell5 {
     position: relative;
     top: 30px;
     left: 0;
-    max-width: 95%;
+    flex: 0 1 auto;
+    align-self: flex-start;
+    min-width: 30%;
 }
 
 .employment {
     position: relative;
     top: 25px;
     left: 0;
-    max-width: 100%;
+    max-height: 85%;
+    max-width: 85%;
 }
 
 .employmentBg {
     position: absolute;
     top:0px;
     left:0px;
-    max-width: 100%;
+    max-height: 85%;
+    max-width: 85%;
 }
 
 .bio-content-cell6 {
     max-width: 90%;
-    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
 }
 
-.bio-content h1 {
+.bio-content-1 h1 {
     text-align: left !important;
     margin-bottom: 1em !important;
     color: #d9b310;
     
+  }
+  .bio-content-2 h1 {
+    text-align: right !important;
+    margin-bottom: 1em !important;
+    color: #d9b310;    
+  }
+  .bio-content-3 h1 {
+    text-align: left !important;
+    margin-bottom: 1em !important;
+    color: #d9b310;    
   }
 
 
@@ -183,13 +243,24 @@ h3 {
 
 /* Tablet */
 @media screen and (min-width: 700px) and (max-width: 1023px) {
-
+    .bio-intro-items:nth-child(2) {
+        display: block;
+        min-width: 30%;
+        min-height: 350px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        background-image: url('../../images/bio/heart.png');
+        background-position: center;
+        background-size:contain;
+        background-repeat: no-repeat;
+        max-width: 45%; 
+    }
 }
 
 /* Mobile */
 @media screen and (max-width: 699px) {
     .bio-container {
-        padding: 1rem 3rem 1rem 3rem;
+        padding: 0.9rem 0.5rem 5rem 0.5rem;
         flex-direction: column-reverse;
         align-items:center;
     }
@@ -197,13 +268,27 @@ h3 {
     .bio-intro-items:nth-child(2) {
         display: block;
         min-height: 200px;
+        min-width: 50%;
     }
 
     .h1-bio-intro {
-        font-size: 2rem ;        
-      }
+        font-size: 2rem ;  
+        text-align: center !important;
+        margin-bottom: 1em !important;    
+    }
+
+    h2 {
+        text-align: center !important;
+    }
+    
+    h3 {
+        text-align: center !important;
+        margin-top: 0.8em;
+        color: #328CC1;
+    }
 
     .bio-success-bar {
+        padding: 0.2rem 1rem 5rem 0.5rem;
         grid-auto-flow: column;
         grid-template-columns: repeat(2, auto);
         grid-template-rows: repeat(4, auto);
@@ -256,5 +341,90 @@ h3 {
     .bio-success-section:nth-child(8) {
         order: 8;	
     }
+
+    .bio-content-1 {
+        padding: 0.5rem 0.5rem 5rem 0.5rem;
+        flex-direction: column;
+        justify-content:center;
+        align-content:center;
+    }
+
+    .bio-content-2 {
+        padding: 0.5rem 0.5rem 5rem 0.5rem;
+        flex-direction:column-reverse;
+        justify-content: center;
+        align-content: center;
+    }
+    
+    .bio-content-3 {
+        padding: 0.5rem 0.5rem 5rem 0.5rem;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .bio-content-cell1 {
+        top: 0px;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+
+    .bio-content-cell2 {
+        align-items: center;
+        text-align:center;        
+    }
+
+    .bio-content-cell3 {
+        align-items: center;
+        text-align:center;
+    }
+
+    .bio-content-cell4 {
+        top: 0px;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+
+    .bio-content-cell5 {
+        top: 0px;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    .bio-content-cell6 {
+        text-align: center;
+        align-items: center;
+    }
+
+    .prizesBg {
+        max-height: 85%;
+        max-width: 85%;
+    }
+
+    .educationBg {
+        max-height: 85%;
+        max-width: 85%;
+    }
+
+    .employmentBg {
+        max-height: 85%;
+        max-width: 85%;
+    }
+
+    .bio-content-1 h1 {
+        text-align: center !important;
+        margin-bottom: 1em !important;
+        color: #d9b310;
+        
+      }
+      .bio-content-2 h1 {
+        text-align: center !important;
+        margin-bottom: 1em !important;
+        color: #d9b310;    
+      }
+      .bio-content-3 h1 {
+        text-align: center !important;
+        margin-bottom: 1em !important;
+        color: #d9b310;    
+      }
 
 }
