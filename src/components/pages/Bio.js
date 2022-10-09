@@ -8,10 +8,29 @@ import educationBg from '../../images/bio/education-bg.png';
 import employment from '../../images/bio/employment.png';
 import employmentBg from '../../images/bio/employment-bg.png';
 
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+  
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+  
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      } else {
+        reveals[i].classList.remove("active");
+      }
+    }
+  }
+  
+  window.addEventListener("scroll", reveal);
+
 function Bio() {
     return (
         <>
-        <div className='bio'>
+        <div className='bio' id='section-home'>
+        <section className='section'>
             <div className='bio-container'>
                 <div className='bio-intro-items'>
                     <h1 className='h1-bio-intro'>“My experience and research is here to help you reach your life goals. The breadth and diversity of my experience make we well positioned to achieve this.
@@ -22,7 +41,7 @@ function Bio() {
                     </h3>
                 </div>
                 <div className='bio-intro-items'></div>
-            </div>
+            </div>     
             <div className='bio-success-bar'>
                 <div className='bio-success-image'><i class="fa-solid fa-user-doctor fa-2xl"></i></div>
                 <div className='bio-success-image'><i class="fa-solid fa-book-medical fa-2xl"></i></div>
@@ -33,8 +52,11 @@ function Bio() {
                 <div className='bio-success-section'>Prizes: <br /> 5</div>
                 <div className='bio-success-section'>Degrees: <br /> 7</div>
             </div>
+            <a href="#section-content-1" className='scroll-down'><span></span>Scroll</a>
+        </section>
             <div className='bio-content'>
-                <div className='bio-content-1'>
+            <section id='section-content-1' className='section'>
+                <div className='bio-content-1 reveal'>
                     <div className='bio-content-cell1'><img class='prizesBg' src={prizesBg}></img><img class='prizes' src={prizes}></img></div>
                     <div className='bio-content-cell2'>
                         <h1>Awards:</h1>
@@ -54,7 +76,10 @@ function Bio() {
                         Imperial College London, 2009  </p>
                     </div>
                 </div>
-                <div className='bio-content-2'>
+                <a href="#section-content-2" className='scroll-down'><span></span>Scroll</a>
+            </section>
+            <section id='section-content-2' className='section'>
+                <div className='bio-content-2 reveal'>
                     <div className='bio-content-cell3'>
                         <h1>Qualifications:</h1>                
 
@@ -77,7 +102,10 @@ function Bio() {
                     </div>
                     <div className='bio-content-cell4'><img class='educationBg' src={educationBg}></img><img class='education' src={education}></img></div>
                 </div>
-                <div className='bio-content-3'>
+                <a href="#section-content-3" className='scroll-down'><span></span>Scroll</a>
+            </section>
+            <section id='section-content-3' className='section'>
+                <div className='bio-content-3 reveal'>
                     <div className='bio-content-cell5'><img class='employmentBg' src={employmentBg}></img><img class='employment' src={employment}></img></div>
                     <div className='bio-content-cell6'>
                         <h1>Employment:</h1>
@@ -100,6 +128,8 @@ function Bio() {
                         This is a sub-journal of the European Heart Journal focusing on Case Reports.</p>
                     </div>
                 </div>
+                <a href="#section-home" className='scroll-down'><span></span>Top</a>
+            </section>
             </div>
         </div>
         </>
