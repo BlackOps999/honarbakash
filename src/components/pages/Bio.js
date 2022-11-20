@@ -14,7 +14,7 @@ function reveal() {
     for (var i = 0; i < reveals.length; i++) {
       var windowHeight = window.innerHeight;
       var elementTop = reveals[i].getBoundingClientRect().top;
-      var elementVisible = 150;
+      var elementVisible = 50;
   
       if (elementTop < windowHeight - elementVisible) {
         reveals[i].classList.add("active");
@@ -52,7 +52,10 @@ function Bio() {
                 <div className='bio-success-section'>Prizes: <br /> 5</div>
                 <div className='bio-success-section'>Degrees: <br /> 7</div>
             </div>
-            <a href="#section-content-1" className='scroll-down'><span></span>Scroll</a>
+            <div className='break'></div>
+            <div className='bio-content--scroll reveal-slow'>
+                <a href="#section-content-1" className='scroll-down'><span></span>Scroll</a>
+            </div>
         </section>
             <div className='bio-content'>
             <section id='section-content-1' className='section'>
@@ -76,7 +79,10 @@ function Bio() {
                         Imperial College London, 2009  </p>
                     </div>
                 </div>
-                <a href="#section-content-2" className='scroll-down'><span></span>Scroll</a>
+                <div className='break'></div>
+                <div className='bio-content-1-scroll reveal'>
+                    <a href="#section-content-2" className='scroll-down'><span></span>Scroll</a>
+                </div>
             </section>
             <section id='section-content-2' className='section'>
                 <div className='bio-content-2 reveal'>
@@ -102,7 +108,10 @@ function Bio() {
                     </div>
                     <div className='bio-content-cell4'><img class='educationBg' src={educationBg}></img><img class='education' src={education}></img></div>
                 </div>
-                <a href="#section-content-3" className='scroll-down'><span></span>Scroll</a>
+                <div className='break'></div>
+                <div className='bio-content-2-scroll reveal'>
+                    <a href="#section-content-3" className='scroll-down'><span></span>Scroll</a>
+                </div>
             </section>
             <section id='section-content-3' className='section'>
                 <div className='bio-content-3 reveal'>
@@ -115,7 +124,7 @@ function Bio() {
                         <br />
                         <p><b>Post CCT Clinical Fellow in Cardiology and Electrophysiology</b><br />
                         October 2021. Barts Heart Centre, Barts Health NHS trust </p>
-                        <br />
+                        <br />  
                         <p><b>Founder and Chief Technology Officer, Rhythm AI Ltd</b><br />		
                         June 2019 – present. Having invented, patented and published on a technique to map AF called ‘STAR mapping’ I founded a company together with my co-inventors to take STAR forward. This has received £2.2m in funding from Venture Capital and will fund a multi-centre trial. https://rhythm-ai.com/</p>
                         <br />
@@ -128,7 +137,10 @@ function Bio() {
                         This is a sub-journal of the European Heart Journal focusing on Case Reports.</p>
                     </div>
                 </div>
-                <a href="#section-home" className='scroll-down'><span></span>Top</a>
+                <div className='break'></div>
+                <div className='bio-content-3-scroll reveal'>
+                    <a href="#section-home" className='scroll-down'><span></span>Top</a>
+                </div>
             </section>
             </div>
         </div>

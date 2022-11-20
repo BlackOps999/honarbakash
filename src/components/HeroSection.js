@@ -8,7 +8,7 @@ function HeroSection() {
     return (
         <div className="hero-container">
             <video src="../videos/AdobeStock_471926688_Video_HD_Preview.mov" autoPlay loop muted />  
-            <h1>DR. Shohreh Honarbakash</h1>
+            <h1>DR. Shohreh honarbakhsh</h1>
             <p> MBBS BSc MRCP PhD</p>
             <p></p>
             <p>Barts Health NHS Trust - Cardiology</p>
